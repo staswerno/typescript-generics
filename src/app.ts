@@ -14,7 +14,7 @@ const promise: Promise<string> = new Promise((resolve, reject) => {
 // Promise<any> would give less TS type safety
 // eg if resolve is integer, can use string methods on it
 
-function merge<T, U>(objA: T, objB: U) {
+function merge<T extends object, U extends object>(objA: T, objB: U) {
 	return Object.assign(objA, objB);
 }
 
@@ -24,3 +24,5 @@ const mergedObj = merge({ name: "Stasi" }, { age: 21 });
 // could typecast but very cumbersome
 // so use <generic> to return intersection of any 2 types
 // set dynamically when calling function
+
+// type constraints using extends keyword
