@@ -26,3 +26,20 @@ const mergedObj = merge({ name: "Stasi" }, { age: 21 });
 // set dynamically when calling function
 
 // type constraints using extends keyword
+
+interface Lengthy {
+	length: number;
+}
+
+function countAndDescribe<T extends Lengthy>(element: T): [T, string] {
+	let descriptionText = "Got no value.";
+	if (element.length === 0) {
+		descriptionText = "Got 1 element.";
+	} else if (element.length > 1) {
+		descriptionText = "Got " + element.length + " elements.";
+	}
+	return [element, descriptionText];
+}
+
+console.log(countAndDescribe("Whatup."));
+console.log(countAndDescribe(["Whatup.", "Yo."]));
