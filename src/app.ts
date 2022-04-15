@@ -54,3 +54,43 @@ function extractAndConvert<T extends object, U extends keyof T>(
 }
 
 extractAndConvert({ name: "Max" }, "name");
+
+// generic classes
+// 
+// when uniform data but don't care about type
+// we are making sure it only takes primitive types
+// to ensure no confusion trying to remove reference types 
+
+class DataStorage<T extends string | number | boolean> {
+	private data: T[] = [];
+
+	addItem(item: T) {
+		this.data.push(item);
+	}
+	removeItem(item: T) {
+		if (this.data.indexOf(item) === -1) {
+			return;
+		}
+		this.data.splice(this.data.indexOf(item), 1); // -1
+	}
+	getItems() {
+		return [...this.data];
+	}
+}
+
+const textStorage = new DataStorage<string>();
+textStorage.addItem('Stasi');
+textStorage.addItem('Jopo');
+textStorage.removeItem('Stasi');
+console.log(textStorage.getItems()); 
+
+// flexible! can also store numbers
+const numberStorage = new DataStorage<number>();
+
+// const objStorage = new DataStorage<object>();
+// const stasObj = {name: 'Stasi'};
+// objStorage.addItem(stasObj);
+// objStorage.addItem({name: 'Jopo'});
+// // ...
+// objStorage.removeItem(stasObj);
+// console.log(objStorage.getItems());

@@ -2,6 +2,8 @@
 
 # what are generics?
 
+- flexibility combined with type safety
+
 # built in types:
 
 - type connected with other type
