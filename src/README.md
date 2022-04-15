@@ -12,3 +12,5 @@
 - promise types
 
 pass extra info into a function to work better with result of function in typescript optimal way
+
+(check generic vs union types video to see difference)
