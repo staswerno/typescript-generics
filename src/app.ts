@@ -94,3 +94,34 @@ const numberStorage = new DataStorage<number>();
 // // ...
 // objStorage.removeItem(stasObj);
 // console.log(objStorage.getItems());
+
+
+// generic utility types
+// built in generic types
+
+interface CourseGoal {
+	title: string;
+	description: string;
+	completeUntil: Date;
+}
+
+// Partial type (open up)
+
+function createCourseGoal(
+	title: string, 
+	description: string, 
+	date: Date
+	): CourseGoal {
+		let courseGoal: Partial<CourseGoal> = {};
+		courseGoal.title = title;
+		courseGoal.description = description;
+		courseGoal.completeUntil = date;
+		return courseGoal as CourseGoal;
+	}
+// Partial makes properties optional
+
+// Readonly type (lock down)
+
+const newNames: Readonly<string[]> = ['Stasi', 'Jopo'];
+// newNames.push('Luna');
+// creates error
